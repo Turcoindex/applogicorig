@@ -3,7 +3,25 @@
 class BarongMailer < ApplicationMailer
   def verification_email(email, token)
     @email = email
-    @confirmation_link = ENV.fetch('EMAIL_CONFIRMATION_URL_TEMPLATE').gsub(/#\{token\}/, token)
-    mail(to: @email, subject: 'Account email confirmation instructions')
+    @confirmation_link = ENV.fetch('BARONG_ACCOUNT_EMAIL_CONFIRMATION_URL_TEMPLATE').gsub(/#\{token\}/, token)
+    mail(to: @email, subject: '"Hesap Doğrulama İşlemi - Confirmation Instructions')
+  end
+
+  def reset_password(email, token)
+    @email = email
+    @confirmation_link = ENV.fetch('BARONG_ACCOUNT_PASSWORD_RESET_URL_TEMPLATE').gsub(/#\{token\}/, token)
+    mail(to: @email, subject: 'Şifre Sıfırlama - Reset Password Instructions')
+  end
+
+  def unlock_account(email, token)
+    @email = email
+    @confirmation_link = ENV.fetch('BARONG_ACCOUNT_UNLOCK_URL_TEMPLATE').gsub(/#\{token\}/, token)
+    mail(to: @email, subject: 'Hesap Kilidi Açma - Unlock Account Instructions')
+  end
+
+  def document_verified(email)
+    @email = email
+    @link = ENV.fetch('BARONG_ACCOUNT_SIGN_IN_URL').gsub(/#\{token\}/, token)
+    mail(to: @email, subject: 'Hesabınız Onaylanmıştır - Your Identity Was Approved')
   end
 end
