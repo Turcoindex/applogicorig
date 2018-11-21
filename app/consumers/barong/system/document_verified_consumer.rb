@@ -5,7 +5,7 @@ module Barong
     class DocumentVerifiedConsumer
       def call(event)
         email = event.fetch(:email)
-        ProfileMailer.document_verified(email).deliver_now
+        BarongMailer.document_verified(email).deliver_now
       end
   
       class << self

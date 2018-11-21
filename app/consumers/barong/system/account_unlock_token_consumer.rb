@@ -4,11 +4,11 @@ module Barong
   module System
     class AccountUnlockTokenConsumer
       def call(event)
-        token = event[:record][:token]
-        email = event[:record][:email]
-        BarongMailer.unlock_account(email, token).deliver_now
+        email = event.fetch(:email)
+        token = event.fetch(:token)
+        BarongMailer.unlock_instructions(email, token).deliver_now
       end
-    
+
       class << self
         def call(event)
           new.call(event)
@@ -17,3 +17,5 @@ module Barong
     end
   end
 end
+
+
