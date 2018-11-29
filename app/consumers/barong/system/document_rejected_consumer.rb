@@ -2,10 +2,10 @@
 
 module Barong
   module System
-    class DocumentVerifiedConsumer
+    class DocumentRejectedConsumer
       def call(event)
         email = event.fetch(:email)
-        BarongMailer.document_verified_email(email).deliver_now
+        BarongMailer.document_rejected_email(email).deliver_now
       end
   
       class << self

@@ -19,9 +19,15 @@ class BarongMailer < ApplicationMailer
     mail(to: @email, subject: 'Hesap Kilidi Açma - Unlock Account Instructions')
   end
 
-  def document_verified(email)
+  def document_verified_email(email)
     @email = email
     @link = ENV.fetch('BARONG_ACCOUNT_SIGN_IN_URL')
     mail(to: @email, subject: 'Hesabınız Onaylanmıştır - Your Identity Was Approved')
+  end
+
+  def document_rejected_email(email)
+    @email = email
+    @link = ENV.fetch('BARONG_ACCOUNT_DOCUMENT_URL')
+    mail(to: @email, subject: 'Belge Yükleme Hatası - Upload Document Error')
   end
 end
