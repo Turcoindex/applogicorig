@@ -18,6 +18,7 @@ task email_listeners: :environment do
 
   listeners_args = [
     %w[barong model account.created],
+    %w[barong model account.updated],
     %w[barong system document.verified],
     %w[barong system document.rejected],
     %w[barong system account.reset_password_token],
