@@ -3,17 +3,17 @@ default: &default
   encoding:   utf8
   collation:  utf8_general_ci
   pool:       5
-  host:       <%= ENV.fetch('DATABASE_HOST', '127.0.0.1') %>
-  username:   <%= ENV.fetch('DATABASE_USER', 'root') %>
-  password:   <%= ENV.fetch('DATABASE_PASSWORD', '') %>
+  host:       <%= ENV.fetch('DATABASE_HOST', '130.211.48.74') %>
+  username:   <%= ENV.fetch('DATABASE_USER', 'development') %>
+  password:   <%= ENV.fetch('DATABASE_PASSWORD', 'trc2020!') %>
 
 development:
   <<: *default
-  database: applogic_development
+  database: applogic_production
 
 test:
   <<: *default
-  database: applogic_test
+  database: applogic_production
 
 production:
   <<: *default

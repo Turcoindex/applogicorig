@@ -14,6 +14,7 @@ module APIv1
     mount APIv1::Withdraw
     mount APIv1::Deposit
     mount APIv1::Beneficiaries
+    mount APIv1::Campaigns
 
     add_swagger_documentation base_path: BaseAPI::PREFIX,
                               mount_path: '/swagger',

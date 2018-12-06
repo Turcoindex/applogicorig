@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_155403) do
+ActiveRecord::Schema.define(version: 2018_12_04_140347) do
 
   create_table "beneficiaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "rid", limit: 13, null: false
@@ -34,6 +34,25 @@ ActiveRecord::Schema.define(version: 2018_06_25_155403) do
     t.datetime "updated_at", null: false
     t.index ["rid"], name: "index_beneficiaries_on_rid", unique: true
     t.index ["uid"], name: "index_beneficiaries_on_uid"
+  end
+
+  create_table "campaign_markets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "campaign_id"
+    t.string "ask"
+    t.string "bid"
+    t.string "market"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "campaigns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.text "description"
+    t.string "name"
+    t.integer "type"
+    t.boolean "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
