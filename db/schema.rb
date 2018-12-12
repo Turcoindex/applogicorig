@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_140347) do
+ActiveRecord::Schema.define(version: 2018_12_12_091124) do
 
   create_table "beneficiaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "rid", limit: 13, null: false
@@ -49,10 +49,13 @@ ActiveRecord::Schema.define(version: 2018_12_04_140347) do
     t.string "code"
     t.text "description"
     t.string "name"
-    t.integer "type"
     t.boolean "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "path"
+    t.datetime "end_date"
+    t.datetime "start_date"
+    t.integer "campaign_type", default: 0, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
